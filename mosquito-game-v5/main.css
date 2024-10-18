@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#game{
+	background-color:#f0f;
+	margin:0 auto;
+}
+
+#scores{
+	src: url("../src/fonts/Angstridden-nrVM.ttf");
+	font-family: "AngstRidden", "Angstridden", "Angstridden-nrVM.ttf", "Angstridden-nrVM", Arial, serif;
+	font-size: 40px;
+}

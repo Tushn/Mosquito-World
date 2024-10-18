@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+header, main, footer{
+	padding: 10px;
+	margin: 0 auto;
+	width: 80%;
+	background-color:#eea;
+}
+
+body{
+	background-color: #ccc;
+}
+
+header{
+	text-align: center;
+	border-bottom: solid 5px;
+	/* border: solid 4px 0px; */
+	/* box-shadow: 2rem 0 2rem 0rem skyblue; */
+}
+
+#game{
+	background-color:#f0f;
+	margin:0 auto;
+	float: left;
+}
+
+#title{
+	font-size: 76px;
+	/* color: ; */
+}
+
+#description{
+	clear: both;
+}

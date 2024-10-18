@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="main.css" rel="stylesheet">
+		<title>Mosquito World - Dominion</title>
+		<link rel="stylesheet" href="../src/fonts/Angstridden-nrVM.ttf" />
+	</head>
+	<body>
+		<canvas height="400px" width="400px" id="game"></canvas>
+		<div id="cronometer">00:00</div>
+		<div id="scores">0</div>
+		
+		
+		<div>
+			<label for="scaleX">scaleX:</label>
+			<input type="range" id="scaleX" min="-1000" max="1000" value="500">
+			<label for="scaleY">scaleY:</label>
+			<input type="range" id="scaleY" min="-1000" max="1000" value="500">
+		</div>
+		
+		<div>
+			<label for="skewX">skewX:</label>
+			<input type="range" id="skewX" min="-1000" max="1000" value="0">
+			<label for="skewY">skewY:</label>
+			<input type="range" id="skewY" min="-1000" max="1000" value="0">
+		</div>
+
+		<div>
+			<label for="translateX">translateX:</label>
+			<input type="range" id="translateX" min="-200" max="300" value="0">
+			<label for="translateY">translateY:</label>
+			<input type="range" id="translateY" min="-200" max="300" value="0">
+		</div>
+		
+		<!-- <script src="main.js"></script> -->
+		<script src="screen.js"></script>
+	</body>
+	<!-- var ok = parseInt('4C',16)*2+parseInt('310', 16) -->
+<!-- ok.toString(16) -->
+</html>

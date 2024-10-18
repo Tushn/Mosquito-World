@@ -1,0 +1,37 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<canvas height="400px" width="400px" style="background-color:#ccc" id="game"></canvas>
+		<script>
+			var game = document.querySelector("#game")
+			var ctx = game.getContext("2d")
+			var mosquito = {}
+			var target
+			
+			function gerarMosquito(x, y, rad, color){
+				ctx.fillStyle = color;
+				ctx.beginPath();
+				ctx.arc(x, y, rad, 0, 2 * Math.PI);
+				ctx.stroke();
+				
+				target = new Object()
+				target.x = x;
+				target.y = y;
+				target.rad = rad;
+				
+				return target;
+			}
+			
+			mosquito = gerarMosquito(30, 30, 30, "red")
+			
+			game.addEventListener('click', function(event) {
+				//ctx.fillStyle = colorBackground
+				if( Math.pow( Math.pow(event.clientX-mosquito.x, 2) + Math.pow(event.clientY-mosquito.y, 2), 0.5) <= target.rad ){
+					ctx.fillRect(0, 0, game.width, game.height)
+					mosquito = gerarMosquito(Math.random()*game.width, Math.random()*game.height, Math.random()*100+10, "red")
+				}
+			})
+		</script>
+	</body>
+</html>
