@@ -155,29 +155,13 @@ class Screen{
 		ctx.fillText("Matar mosquito", 75, 280);
 	}
 }
-/*
-background_screen.src = '../src/img/title.png'
-background_screen.onload = function(){
-	ctx.drawImage(background_screen,
-					0,0,
-					game.width,game.height)
-					
-	const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-
-	gradient.addColorStop(0, "rgba(200, 0, 0, 0.5)");
-	gradient.addColorStop(0.8, "rgba(200, 200, 0, 0)");
-	//gradient.addColorStop(1, "green");
-
-	ctx.fillStyle = gradient;
-	ctx.fillRect(0, 0, game.width, game.height);
-}*/
 
 var screen = new Screen('../src/img/title.png')
 var road = new Screen('../src/img/water-texture.png')
 entities.push(new Mosquito('../src/img/mosquito.png'))
 var gradientNumber = 0, rot = 0, step = 1
 
-function gameLoop(timelapse){
+function loopStartScreen(){
 	ctx.fillRect(0,0,400,400)
 	screen.draw();
 	for(let entity of entities){
@@ -189,6 +173,55 @@ function gameLoop(timelapse){
 	
 	requestAnimationFrame(gameLoop);
 }
+
+function running(){
+	ctx.drawImage(backgroundImg, 0,0,400,400);
+		ctx.drawImage(mosquitoImg, mosquito.x-mosquito.rad, mosquito.y-mosquito.rad, mosquito.rad*2, mosquito.rad*2);
+		game.addEventListener('click', function(event) {
+			// console.log("X: " + event.clientX + ", Y: " + event.clientY)
+			//ctx.fillStyle = colorBackground
+			if( Math.pow( Math.pow(event.offsetX-mosquito.x, 2) + Math.pow(event.offsetY-mosquito.y, 2), 0.5) <= mosquito.rad ){
+				if(time_start == 0)
+					time_start = new Date().getTime()
+				
+				kill_count += 1
+				scores_tag.textContent = kill_count
+				
+				// ctx.fillRect(0, 0, game.width, game.height)
+				ctx.drawImage(backgroundImg, 0,0,400,400);
+				
+				mosquito = gerarMosquito(Math.random()*game.width, Math.random()*game.height, Math.random()*100+10, "red")
+				
+				/*ctx.fillStyle = "#000";
+				ctx.beginPath();
+				ctx.arc(mosquito.x, mosquito.y, 
+						mosquito.rad, 0, 2 * Math.PI);
+				ctx.stroke();*/
+				ctx.drawImage(mosquitoImg, mosquito.x-mosquito.rad, mosquito.y-mosquito.rad, mosquito.rad*2, mosquito.rad*2);
+			}
+		})
+}
+function gameLoop(func, timelapse){
+	func()
+}
+
+
+game.addEventListener('mousemove', function(event){
+	if(event.offsetX>75 && event.offsetX<320 &&
+		event.offsetY>250 && event.offsetY<290 ){
+		game.style.cursor = "pointer";
+	}else{
+		game.style.cursor = "default";	
+	}
+})
+game.addEventListener('click', function(event){
+	if(event.offsetX>75 && event.offsetX<320 &&
+		event.offsetY>250 && event.offsetY<290 ){
+		gameLoop(running)
+	}
+})
+
+gameLoop(loopStartScreen)
 
 Promise.all(promises).then(function(images) {
 	images.forEach(function(img) {

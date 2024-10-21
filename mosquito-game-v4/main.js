@@ -30,30 +30,6 @@ backgroundImg.src = "../src/img/map.png";
 
 function drawImageActualSize(){
 	backgroundImg.onload = function(){
-		ctx.drawImage(backgroundImg, 0,0,400,400);
-		ctx.drawImage(mosquitoImg, mosquito.x-mosquito.rad, mosquito.y-mosquito.rad, mosquito.rad*2, mosquito.rad*2);
-		game.addEventListener('click', function(event) {
-			// console.log("X: " + event.clientX + ", Y: " + event.clientY)
-			//ctx.fillStyle = colorBackground
-			if( Math.pow( Math.pow(event.offsetX-mosquito.x, 2) + Math.pow(event.offsetY-mosquito.y, 2), 0.5) <= mosquito.rad ){
-				if(time_start == 0)
-					time_start = new Date().getTime()
-				
-				kill_count += 1
-				scores_tag.textContent = kill_count
-				
-				// ctx.fillRect(0, 0, game.width, game.height)
-				ctx.drawImage(backgroundImg, 0,0,400,400);
-				
-				mosquito = gerarMosquito(Math.random()*game.width, Math.random()*game.height, Math.random()*100+10, "red")
-				
-				ctx.fillStyle = "#000";
-				ctx.beginPath();
-				ctx.arc(mosquito.x, mosquito.y, 
-						mosquito.rad, 0, 2 * Math.PI);
-				ctx.stroke();	
-				ctx.drawImage(mosquitoImg, mosquito.x-mosquito.rad, mosquito.y-mosquito.rad, mosquito.rad*2, mosquito.rad*2);
-			}
-		})
+		
 	}
 }
