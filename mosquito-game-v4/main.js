@@ -2,7 +2,6 @@ var game = document.querySelector("#game")
 var ctx = game.getContext("2d")
 var mosquito = {}, target;
 var kill_count = 0;
-var time_start = 0, time_limit = 60*1000;
 var promises = [], entities = [];
 var target, background_screen = new Image();
 const font = new FontFace("AngstRidden", "url(../src/fonts/Angstridden-nrVM.ttf)")
@@ -11,6 +10,7 @@ var xf_screen, yf_screen, wtg, htg;
 
 var cronometer_tag = document.getElementById("cronometer")
 var scores_tag = document.getElementById("scores")
+var func
 
 function gerarMosquito(x, y, rad, color){			
 	var target = new Object()
